@@ -43,7 +43,20 @@ function load_mailbox(mailbox) {
     mails.forEach(mail => {
       // Vars
       const mailDiv = document.createElement("div");
+      const archiveButton = document.createElement("button");
       
+      // Archive Button Styling
+      archiveButton.classList.add("btn", "btn-sm", "btn-outline-primary");
+      if (mailbox === "inbox")
+      {
+        archiveButton.innerHTML = "Archive";
+      }
+      else
+      {
+        archiveButton.innerHTML = "Remove from Archive";
+      }
+      
+
       // Div Construction
       mailDiv.innerHTML = `<p>From: <strong>${mail.sender}</strong></p><p>Subject: ${mail.subject}</p><p>${mail.timestamp}</p>`;
       mailDiv.classList.add("email");
@@ -88,8 +101,36 @@ function load_mailbox(mailbox) {
           mailBody.innerHTML = `${email.body}`;
 
           // Append Email Divs
-          document.querySelector("#email-view").append(mailSubject, mailSender, mailRecipients, mailTimestamp, mailBody);
+          document.querySelector("#email-view").append(mailSubject, mailSender, mailRecipients, mailTimestamp, mailBody, archiveButton);
+          // Archive Button only with Inbox Mails
+          if (mailbox !== "inbox" && mailbox !== "archive")
+          {
+            archiveButton.style.display = "none";
+          }
 
+          // Archive Event Listener
+          archiveButton.addEventListener("click", () => {
+            if (mailbox === "inbox")
+            {
+              fetch(`/emails/${mail.id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    archived: true
+                })
+              })
+            }
+            else
+            {
+              fetch(`/emails/${mail.id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    archived: false
+                })
+              })
+            }
+            load_mailbox("inbox");
+          });
+          
           // Mark Mail as Viewed
           fetch(`/emails/${mail.id}`, {
             method: "PUT",
