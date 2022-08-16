@@ -39,7 +39,6 @@ function load_mailbox(mailbox) {
   fetch(`/emails/${mailbox}`)
   .then(response => response.json())
   .then(mails => {
-    console.log(mails);
     mails.forEach(mail => {
       // Vars
       const mailDiv = document.createElement("div");
@@ -47,8 +46,8 @@ function load_mailbox(mailbox) {
       const replyButton = document.createElement("button");
       
       // Archive & Reply Buttons Styling
-      archiveButton.classList.add("btn", "btn-sm", "btn-outline-primary");
-      replyButton.classList.add("btn", "btn-sm", "btn-outline-primary");
+      archiveButton.classList.add("btn", "btn-sm", "btn-outline-primary", "archive");
+      replyButton.classList.add("btn", "btn-sm", "btn-outline-primary", "reply");
       if (mailbox === "inbox")
       {
         archiveButton.innerHTML = "Archive";
@@ -60,7 +59,7 @@ function load_mailbox(mailbox) {
       replyButton.innerHTML = "Reply";
       
       // Div Construction
-      mailDiv.innerHTML = `<p>From: <strong>${mail.sender}</strong></p><p>Subject: ${mail.subject}</p><p>${mail.timestamp}</p>`;
+      mailDiv.innerHTML = `<div><h4>${mail.sender}</h4><p>Subject: ${mail.subject}</p><p>${mail.timestamp}</p></div>`;
       mailDiv.classList.add("email");
       if (mail.read)
       {
@@ -75,9 +74,7 @@ function load_mailbox(mailbox) {
       mailDiv.addEventListener("click", () => {
         fetch(`/emails/${mail.id}`)
         .then(response => response.json())
-        .then(email => {
-          console.log(email);
-          
+        .then(email => {          
           // E-mail Visualization
           document.querySelector('#emails-view').style.display = "none";
           document.querySelector("#email-view").style.display = "block";
@@ -86,21 +83,21 @@ function load_mailbox(mailbox) {
 
           // Mail Construction
           const mailSubject = document.createElement("div");
-          mailSubject.innerHTML = `<p><strong>${email.subject}</strong></p>`;
+          mailSubject.innerHTML = `<h4>${email.subject}</h4>`;
 
           const mailSender = document.createElement("div");
-          mailSender.innerHTML = `<p>From: ${email.sender}</p>`;
+          mailSender.innerHTML = `<span>From: ${email.sender}</span>`;
 
           const mailRecipients = document.createElement("div");
           email.recipients.forEach(recipient => {
-            mailRecipients.innerHTML += `<p>To: ${recipient}`;
+            mailRecipients.innerHTML += `<span>To: ${recipient}</span>`;
           });
 
           const mailTimestamp = document.createElement("div");
-          mailTimestamp.innerHTML = `${email.timestamp}`;
+          mailTimestamp.innerHTML = `<span>${email.timestamp}</span>`;
 
           const mailBody = document.createElement("div");
-          mailBody.innerHTML = `${email.body}`;
+          mailBody.innerHTML = `<p class="email-body">${email.body}</p>`;
 
           // Append Email Divs
           document.querySelector("#email-view").append(mailSubject, mailSender, mailRecipients, mailTimestamp, mailBody, replyButton, archiveButton);
@@ -130,7 +127,10 @@ function load_mailbox(mailbox) {
                 })
               })
             }
-            load_mailbox("inbox");
+            setTimeout(function() 
+            { 
+              load_mailbox("inbox"); 
+            }, 100);
           });
 
           // Reply Event Listener
@@ -145,7 +145,7 @@ function load_mailbox(mailbox) {
             {
               document.querySelector('#compose-subject').value = email.subject;
             }
-            document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote: \n${email.body}`;
+            document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote: \n\n${email.body}`;
           });
           
           // Mark Mail as Viewed
@@ -183,7 +183,10 @@ function send_email() {
     console.log(result);
   });
   // localStorage.clear();
-  load_mailbox("sent");
+  setTimeout(function() 
+  { 
+    load_mailbox("sent"); 
+  }, 100);
   return false;
 }
 // SEND MAIL FUNCTION ENDS

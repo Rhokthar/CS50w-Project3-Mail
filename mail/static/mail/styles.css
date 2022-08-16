@@ -1,10 +1,57 @@
 textarea {
     min-height: 400px;
 }
+h4 {
+    font-size: 1rem;
+    font-weight: 750;
+}
 .email {
     border: 1px solid black;
+    display: flex;
+    padding: 1rem;
+}
+.email div {
+    display: flex;
+    width: 100%;
+}
+.email p {
+    margin: 0;
+}
+.email h4:nth-child(1) {
+    flex-grow: 1;
+}
+.email p:nth-child(2) {
+    flex-grow: 1;
+}
+.email p:nth-child(3) {
+    text-align: right;
+    flex-grow: 8;
 }
 .email:hover {
     cursor: pointer;
     transform: scale(1.01);
+}
+#email-view {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+#email-view div:nth-child(n) {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    margin: -1px 0;
+}
+.email-body {
+    padding-top: 1rem;
+}
+#compose-view {
+    position: relative;
+}
+input.btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+button.archive,
+button.reply {
+    margin: 1rem 0.5rem;
 }
