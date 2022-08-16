@@ -44,9 +44,11 @@ function load_mailbox(mailbox) {
       // Vars
       const mailDiv = document.createElement("div");
       const archiveButton = document.createElement("button");
+      const replyButton = document.createElement("button");
       
-      // Archive Button Styling
+      // Archive & Reply Buttons Styling
       archiveButton.classList.add("btn", "btn-sm", "btn-outline-primary");
+      replyButton.classList.add("btn", "btn-sm", "btn-outline-primary");
       if (mailbox === "inbox")
       {
         archiveButton.innerHTML = "Archive";
@@ -55,8 +57,8 @@ function load_mailbox(mailbox) {
       {
         archiveButton.innerHTML = "Remove from Archive";
       }
+      replyButton.innerHTML = "Reply";
       
-
       // Div Construction
       mailDiv.innerHTML = `<p>From: <strong>${mail.sender}</strong></p><p>Subject: ${mail.subject}</p><p>${mail.timestamp}</p>`;
       mailDiv.classList.add("email");
@@ -101,7 +103,7 @@ function load_mailbox(mailbox) {
           mailBody.innerHTML = `${email.body}`;
 
           // Append Email Divs
-          document.querySelector("#email-view").append(mailSubject, mailSender, mailRecipients, mailTimestamp, mailBody, archiveButton);
+          document.querySelector("#email-view").append(mailSubject, mailSender, mailRecipients, mailTimestamp, mailBody, replyButton, archiveButton);
           // Archive Button only with Inbox Mails
           if (mailbox !== "inbox" && mailbox !== "archive")
           {
@@ -129,6 +131,21 @@ function load_mailbox(mailbox) {
               })
             }
             load_mailbox("inbox");
+          });
+
+          // Reply Event Listener
+          replyButton.addEventListener("click", () => {
+            compose_email();
+            document.querySelector('#compose-recipients').value = email.sender;
+            if (!/^Re:/gi.test(email.subject))
+            {
+              document.querySelector('#compose-subject').value = "Re: " + email.subject;
+            }
+            else
+            {
+              document.querySelector('#compose-subject').value = email.subject;
+            }
+            document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote: \n${email.body}`;
           });
           
           // Mark Mail as Viewed
@@ -165,7 +182,7 @@ function send_email() {
   .then(result => {
     console.log(result);
   });
-  localStorage.clear();
+  // localStorage.clear();
   load_mailbox("sent");
   return false;
 }
