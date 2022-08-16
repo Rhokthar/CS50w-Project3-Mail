@@ -1,0 +1,423 @@
+/* VARIABLES !! NEVER CHANGE NAMES !! */
+:root {
+    --window-max-width: 1920px;
+}
+
+
+/* BLOCK RELATED RULES STARTS */
+.block-container {
+    display: block;
+}
+.inline-container {
+    display: inline;
+}
+.inline-block-container {
+    display: inline-block;
+}
+/* BLOCK RELATED RULES ENDS */
+
+/* BORDER RELATED RULES STARTS */
+.border-rounded {
+    border-radius: 3.4rem;
+}
+.border {
+    border: 1px solid red;
+}
+/* BORDER RELATED RULES ENDS */
+
+/* BOXING RELATED RULES STARTS */
+.boxed-container {
+    width: 100%;
+    max-width: var(--window-max-width);
+}
+.display-hidden {
+    display: none;
+}
+.box-visible {
+    display: visible;
+}
+/* BOXING RELATED RULES ENDS */
+
+/* COLORS STARTS*/
+.bg-low {
+    background-color: var(--bg-light);
+}
+.bg-medium {
+    background-color: var(--bg-medium);
+}
+.bg-hard {
+    background-color: var(--bg-hard);
+}
+.bg-hardest {
+    background-color: var(--bg-hardest);
+}
+.main-text-color {
+    color: var(--main-text);
+}
+.secondary-text-color {
+    color: var(--secondary-text);
+}
+.box-shadow-color {
+    filter: drop-shadow(0 0 10px var(--shadow-color));
+}
+.text-shadow-color {
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+/* COLORS ENDS */
+
+/* FLEX-BOX RELATED RULES STARTS*/
+.flex-container {
+    display: flex;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+.row {
+    flex-direction: row;
+}
+.row-reverse {
+    flex-direction: row-reverse;
+}
+.vertical-row {
+    flex-direction: column;
+}
+.vertical-row-reverse {
+    flex-direction: column-reverse;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-end {
+    justify-content: flex-end;
+}
+.justify-space-between {
+    justify-content: space-between;
+}
+.justify-space-around {
+    justify-content: space-around;
+}
+.align-center {
+    align-items: center;
+}
+.align-end {
+    align-items: flex-end;
+}
+/* FLEX- BOX RELATED RULES ENDS */
+
+/* POSITION RULES STARTS */
+.position-relative {
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+.position-fixed {
+    position: fixed;
+}
+.position-static {
+    position: static;
+}
+.position-sticky {
+    position: sticky;
+}
+/* POSITION RULES ENDS */
+
+/* SIZE RULES STARTS */
+/* WIDTHS */
+.width-100 {
+    width: 100%;
+}
+.width-80 {
+    width: 80%;
+}
+.width-75 {
+    width: 75%;
+}
+.width-66 {
+    width: 66.666%;
+}
+.width-50 {
+    width: 50%;
+}
+.width-33 {
+    width: 33.333%;
+}
+.width-25 {
+    width: 25%;
+}
+.width-20 {
+    width: 20%;
+}
+.width-16 {
+    width: 16.666%;
+}
+/* END WIDTHS */
+/* HEIGHTS */
+.height-100 {
+    height: 100%;
+}
+.height-80 {
+    height: 80%;
+}
+.height-75 {
+    height: 75%;
+}
+.height-66 {
+    height: 66.666%;
+}
+.height-50 {
+    height: 50%;
+}
+.height-33 {
+    height: 33.333%;
+}
+.height-25 {
+    height: 25%;
+}
+.height-20 {
+    height: 20%;
+}
+.height-16 {
+    height: 16.666%;
+}
+/* SIZE RULES ENDS */
+
+/* SPACING RELATED RULES STARTS*/
+/* PADDING */
+/* XS -> 1rem */
+.padding-top-xs {
+    padding-top: 1rem;
+}
+.padding-bottom-xs {
+    padding-bottom: 1rem;
+}
+.padding-left-xs {
+    padding-left: 1rem;
+}
+.padding-right-xs {
+    padding-right: 1rem;
+}
+.padding-all-xs {
+    padding: 1rem;
+}
+/* S -> 2rem */
+.padding-top-s {
+    padding-top: 2rem;
+}
+.padding-bottom-s {
+    padding-bottom: 2rem;
+}
+.padding-left-s {
+    padding-left: 2rem;
+}
+.padding-right-s {
+    padding-right: 2rem;
+}
+.padding-all-s {
+    padding: 2rem;
+}
+/* M -> 5rem */
+.padding-top-m {
+    padding-top: 5rem;
+}
+.padding-bottom-m {
+    padding-bottom: 5rem;
+}
+.padding-left-m {
+    padding-left: 5rem;
+}
+.padding-right-m {
+    padding-right: 5rem;
+}
+.padding-all-m {
+    padding: 5rem;
+}
+/* L -> 7rem */
+.padding-top-l {
+    padding-top: 7rem;
+}
+.padding-bottom-l {
+    padding-bottom: 7rem;
+}
+.padding-left-l {
+    padding-left: 7rem;
+}
+.padding-right-l {
+    padding-right: 7rem;
+}
+.padding-all-l {
+    padding: 7rem;
+}
+/* XL -> 10rem */
+.padding-top-xl {
+    padding-top: 10rem;
+}
+.padding-bottom-xl {
+    padding-bottom: 10rem;
+}
+.padding-left-xl {
+    padding-left: 10rem;
+}
+.padding-right-xl {
+    padding-right: 10rem;
+}
+.padding-all-xl {
+    padding: 10rem;
+}
+/* MARGIN */
+/* XS -> 1rem */
+.margin-top-xs {
+    margin-top: 1rem;
+}
+.margin-bottom-xs {
+    margin-bottom: 1rem;
+}
+.margin-left-xs {
+    margin-left: 1rem;
+}
+.margin-right-xs {
+    margin-right: 1rem;
+}
+.margin-all-xs {
+    margin: 1rem;
+}
+/* S -> 2rem */
+.margin-top-s {
+    margin-top: 2rem;
+}
+.margin-bottom-s {
+    margin-bottom: 2rem;
+}
+.margin-left-s {
+    margin-left: 2rem;
+}
+.margin-right-s {
+    margin-right: 2rem;
+}
+.margin-all-s {
+    margin: 2rem;
+}
+/* M -> 5rem */
+.margin-top-m {
+    margin-top: 5rem;
+}
+.margin-bottom-m {
+    margin-bottom: 5rem;
+}
+.margin-left-m {
+    margin-left: 5rem;
+}
+.margin-right-m {
+    margin-right: 5rem;
+}
+.margin-all-m {
+    margin: 5rem;
+}
+/* L -> 7rem */
+.margin-top-l {
+    margin-top: 7rem;
+}
+.margin-bottom-l {
+    margin-bottom: 7rem;
+}
+.margin-left-l {
+    margin-left: 7rem;
+}
+.margin-right-l {
+    margin-right: 7rem;
+}
+.margin-all-l {
+    margin: 7rem;
+}
+/* XL -> 10rem */
+.margin-top-xl {
+    margin-top: 10rem;
+}
+.margin-bottom-xl {
+    margin-bottom: 10rem;
+}
+.margin-left-xl {
+    margin-left: 10rem;
+}
+.margin-right-xl {
+    margin-right: 10rem;
+}
+.margin-all-xl {
+    margin: 10rem;
+}
+/* AUTO */
+.margin-left-auto {
+    margin-left: auto;
+}
+.margin-right-auto {
+    margin-right: auto;
+}
+.margin-top-auto {
+    margin-top: auto;
+}
+.margin-bottom-auto {
+    margin-bottom: auto;
+}
+.margin-all-auto {
+    margin: auto;
+}
+/* SPACE RELATED RULES ENDS */
+
+/* TEXT RELATED RULES */
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-upper {
+    text-transform: uppercase;
+}
+.text-lower{
+    text-transform: lowercase;
+}
+.text-decoration-none {
+    text-decoration: none;
+}
+/* TEXT RELATED RULES ENDS */
+/* VISIBILITY RULES STARTS */
+.display-none {
+    display: none;
+}
+.visibility-hidden {
+    visibility: hidden;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.overflow-visible {
+    overflow: visible;
+}
+/* VISIBILITY RULES ENDS */
+
+/* PUT AT THE END */
+/* PROJECT START STUFF STARTS*/
+html {
+    font-size: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+/* PROJECT START STUFF ENDS */
